@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<ruleset name="CodingStandards">
+    <description>Coding conventions</description>
+
+    <arg name="colors"/>
+    <arg name="parallel" value="75"/>
+    <arg value="np"/>
+	<arg name="extensions" value="php"/>
+	<arg name="basepath" value="."/>
+
+    <!-- Paths to check -->
+    <file>app</file>
+    <file>config</file>
+    <file>routes</file>
+    <file>tests</file>
+    <file>database/factories</file>
+    <file>database/migrations</file>
+    <file>database/seeders</file>
+    <file>bootstrap/app.php</file>
+    <file>bootstrap/providers.php</file>
+
+    <rule ref="PSR12">
+      <exclude name="PSR12.Classes.AnonClassDeclaration.SpaceAfterKeyword" />
+    </rule>
+
+    <rule ref="PSR12.Operators.OperatorSpacing">
+        <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceBefore" />
+        <exclude name="PSR12.Operators.OperatorSpacing.NoSpaceAfter" />
+    </rule>
+
+    <rule ref="Generic.Arrays.DisallowLongArraySyntax.Found"/>
+
+    <rule ref="Generic.Formatting.SpaceAfterCast"/>
+
+    <rule ref="Squiz.Arrays.ArrayDeclaration.SpaceInEmptyArray"/>
+
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing">
+        <properties>
+            <property name="ignoreNewlines" value="true" />
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing.Incorrect"/>
+
+    <rule ref="Squiz.WhiteSpace.FunctionOpeningBraceSpace.SpacingAfter"/>
+
+    <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <properties>
+            <property name="ignoreBlankLines" value="false"/>
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.PHP.NonExecutableCode.ReturnNotRequired"/>
+
+    <rule ref="Squiz.Strings.DoubleQuoteUsage.NotRequired">
+        <exclude name="Squiz.Strings.DoubleQuoteUsage.ContainsVar"/>
+    </rule>
+
+    <rule ref="Squiz.Arrays.ArrayDeclaration.NoCommaAfterLast">
+        <exclude name="Squiz.Arrays.ArrayDeclaration.CloseBraceNotAligned"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.KeyNotAligned"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.MultiLineNotAllowed"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.NoSpaceAfterComma"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.ValueNoNewline"/>
+        <exclude name="Squiz.Arrays.ArrayDeclaration.ValueNotAligned"/>
+    </rule>
+
+    <rule ref="Squiz.Commenting.FileComment">
+        <exclude name="Squiz.Commenting.FileComment.SpacingAfterOpen"/>
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+    </rule>
+
+    <rule ref="Squiz.Commenting.FunctionComment">
+        <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/>
+        <exclude name="Squiz.Commenting.FunctionComment.InvalidReturn"/>
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+        <exclude name="Squiz.Commenting.FunctionComment.ParamCommentFullStop"/>
+        <exclude name="Squiz.Commenting.FunctionComment.ParamCommentNotCapital"/>
+        <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamName"/>
+        <exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
+        <exclude name="Squiz.Commenting.FunctionComment.EmptyThrows"/>
+        <exclude name="Squiz.Commenting.FunctionComment.ThrowsNoFullStop"/>
+    </rule>
+
+    <rule ref="Squiz.Commenting.VariableComment">
+        <exclude name="Squiz.Commenting.VariableComment.IncorrectVarType"/>
+    </rule>
+
+    <rule ref="Squiz.WhiteSpace.OperatorSpacing">
+        <exclude name="Squiz.WhiteSpace.OperatorSpacing.NoSpaceBefore" />
+        <exclude name="Squiz.WhiteSpace.OperatorSpacing.NoSpaceAfter" />
+    </rule>
+</ruleset>

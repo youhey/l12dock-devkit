@@ -66,7 +66,8 @@ ide: laravel-ide-helper
 
 .PHONY: phpunit
 phpunit:
-	@docker compose exec php-cli php artisan test --parallel --recreate-databases --drop-databases
+	# @docker compose exec php-cli php artisan test --parallel --recreate-databases --drop-databases
+	@docker compose exec php-cli php vendor/bin/phpunit --colors=always
 
 .PHONY: phpstan
 phpstan:
@@ -78,7 +79,7 @@ phpcs:
 
 .PHONY: phpmd
 phpmd:
-	@docker compose exec php-cli php -d "error_reporting=22527" vendor/bin//phpmd app,config,routes,database/factories,database/migrations,database/seeders,bootstrap/app.php,bootstrap/providers.php text phpmd.xml.dist && echo "PHPMD: App Successful"
+	@docker compose exec php-cli php -d "error_reporting=22527" vendor/bin/phpmd app,config,routes,database/factories,database/migrations,database/seeders,bootstrap/app.php,bootstrap/providers.php text phpmd.xml.dist && echo "PHPMD: App Successful"
 
 .PHONY: php-fix-cs
 php-fix-cs:

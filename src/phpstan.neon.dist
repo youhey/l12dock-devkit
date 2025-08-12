@@ -1,0 +1,66 @@
+includes:
+    - ./vendor/phpstan/phpstan-strict-rules/rules.neon
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    # The level 8 is the highest level
+    level: max
+
+    paths:
+        - app
+        - packages/Kiteretsu/OAuth/src
+        - config
+        - routes
+        - database/factories
+        - database/migrations
+        - database/seeders
+        - bootstrap/app.php
+        - bootstrap/providers.php
+
+    ignoreErrors:
+        # -
+        #     identifier: missingType.generics
+        # -
+        #     identifier: missingType.iterableValue
+        # -
+        #     identifier: arrayFilter.strict
+        # -
+        #     identifier: staticMethod.dynamicCall
+        # -
+        #     identifier: function.alreadyNarrowedType
+        # -
+        #     identifier: instanceof.alwaysTrue
+        # -
+        #     identifier: instanceof.alwaysFalse
+        # -
+        #     identifier: identical.alwaysTrue
+        # -
+        #     identifier: identical.alwaysFalse
+        # -
+        #     identifier: argument.templateType
+        # -
+        #     identifier: offsetAccess.nonOffsetAccessible
+        # -
+        #     identifier: cast.string
+        # -
+        #     identifier: cast.int
+        # -
+        #     identifier: property.phpDocType
+        # -
+        #     identifier: property.nonObject
+        # -
+        #     identifier: trait.unused
+        # -
+        #     identifier: parameterByRef.unusedType
+
+    excludePaths:
+        - app/Providers/*ServiceProvider.php
+
+    checkUnionTypes: false
+
+    # @see https://phpstan.org/config-reference#reportstaticmethodsignatures
+    reportStaticMethodSignatures: false
+
+    # @see https://phpstan.org/config-reference#treatphpdoctypesascertain
+    treatPhpDocTypesAsCertain: false
