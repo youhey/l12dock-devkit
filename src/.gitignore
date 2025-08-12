@@ -1,0 +1,45 @@
+# Dependency directories
+/node_modules/
+/vendor/
+npm-debug.log
+yarn-error.log
+
+# Environment & local config
+.env
+.env.backup
+.env.production
+.env.development
+.env.local
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+*.tmp
+
+# IDE / Editor settings
+/.idea
+/.vscode
+/.fleet
+/.nova
+/.zed
+.phpactor.json
+
+# Test / Coverage
+.phpunit.result.cache
+.phpunit.cache
+
+# Laravel
+/auth.json
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+Homestead.json
+Homestead.yaml
+
+# Project
+/build/

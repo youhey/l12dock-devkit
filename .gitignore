@@ -1,0 +1,61 @@
+# Dependency directories
+node_modules/
+vendor/
+
+# Environment & local config
+.env
+.env.*.local
+
+# IDE / Editor settings
+.nova/
+.zed/
+# VSCode
+.vscode/
+*.code-workspace
+# JetBrains IDEs (PHPStorm, IntelliJ IDEA, WebStorm, etc.)
+.idea/
+.idea/*
+.idea_modules/
+*.iml
+out/
+.fleet/
+!*.code-style.xml
+# Vim
+*.swp
+*.swo
+*.swn
+*.swm
+*.un~
+Session.vim
+.viminfo
+.viminfo.tmp
+.vimsessions/
+.phpactor.json
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs & temp
+*.log
+*.tmp
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Test / Coverage
+coverage/
+.phpunit.result.cache
+.phpunit.cache/
+
+# Secret files / Credential files
+secret/
+secrets/
+.secret/
+.secrets/
+credential/
+credentials/
+.credential/
+.credentials/
+auth.json

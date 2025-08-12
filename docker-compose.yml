@@ -1,0 +1,80 @@
+services:
+
+  php-fpm:
+    build: ./docker/php-fpm
+    pull_policy: missing
+    volumes:
+      - ./src:/src
+    expose:
+      - "9000"
+    networks: [internal]
+    depends_on:
+      - mysql
+      - localstack
+      - mail
+
+  php-cli:
+    build: ./docker/php-cli
+    pull_policy: missing
+    volumes:
+      - ./src:/src
+    environment:
+      COMPOSER_MEMORY_LIMIT: -1
+      COMPOSER_PROCESS_TIMEOUT: 3600
+    networks: [internal]
+    depends_on:
+      - mysql
+      - localstack
+      - mail
+    stdin_open: true
+    tty: true
+
+  mysql:
+    build: ./docker/mysql
+    pull_policy: missing
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_USER: "app"
+      MYSQL_PASSWORD: "password"
+      DATABASES: "app tests"
+    ports:
+      - "${FORWARD_MYSQL_PORT:-3306}:3306"
+    networks: [internal]
+
+  nginx:
+    build:
+      context: ./docker/nginx
+      args:
+        PHP_UPSTREAM: "php-fpm"
+        PHP_UPSTREAM_PORT: 9000
+    pull_policy: missing
+    volumes:
+      - ./src/public:/src/public
+    ports:
+      - "${FORWARD_NGINX_PORT:-8000}:80"
+    networks: [internal]
+    depends_on:
+      - php-fpm
+
+  localstack:
+    image: localstack/localstack:4.7.0
+    pull_policy: missing
+    environment:
+      SERVICES: "s3"
+    ports:
+      - "4566:4566"
+      - "4567-4584:4567-4584"
+    networks: [internal]
+
+  mail:
+    image: axllent/mailpit:v1.27.3
+    pull_policy: missing
+    ports:
+      - "${FORWARD_MAILPIT_PORT:-1025}:1025"
+      - "${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025"
+    networks: [internal]
+
+networks:
+  internal:
+    name: l12dock_internal
+    driver: bridge
